@@ -1,0 +1,36 @@
+{
+    "name": "easy-cloud-request/core",
+    "description": "a simple package for cloud",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2",
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "friendsofphp/php-cs-fixer": "^3.2",
+        "phpstan/phpstan": "^1.10"
+    },
+    "authors": [
+        {
+            "name": "zhanghuid",
+            "email": "iamhuide@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "EasyCloudRequest\\Core\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EasyCloudRequest\\Tests\\": "tests"
+        }
+    },
+    "license": "MIT",
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix $1 --rules=@PSR2",
+        "test": "phpunit -c phpunit.xml --colors=always",
+        "analyse": "phpstan analyse --memory-limit 1024M -l 0 $1"
+    }
+}
