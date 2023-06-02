@@ -35,7 +35,7 @@ class SimpleCloud
     {
         $gateway = $this->gateway()->requests($bag);
         $bag->reset();
-        
+
         return $gateway;
     }
 
@@ -88,13 +88,16 @@ class SimpleCloud
             $gateway = $this->callCustomCreator($name);
         } else {
             $className = $this->formatGatewayClassName($name);
+            if (class_exists($name)) {
+                $name = lcfirst(str_replace(['\/', '\\', 'EasyCloudRequest', 'Gateway'], '', $name));
+            }
             $gateway = $this->makeGateway($className, $this->config->get("gateway.{$name}"));
 
             if (!($gateway instanceof GatewayInterface)) {
                 throw new InvalidArgumentException(sprintf('Gateway "%s" not inherited from %s.', $name, GatewayInterface::class));
             }
         }
-        
+
         return $gateway->setHttpConfig($this->config->get('http_config', []));
     }
 
