@@ -1,6 +1,6 @@
 <?php
 
-namespace EasyCloudRequest\Exceptions;
+namespace EasyCloudRequest\Core\Exceptions;
 
 use \EasyCloudRequest\Core\Exceptions\Exception;
 
